@@ -40,4 +40,14 @@ class Market
     end
     food_hash
   end
+
+  def sell(food_item, quantity)
+    if total_inventory[food_item] < quantity
+      false
+    elsif total_inventory[food_item] >= quantity
+      true && total_inventory[food_item] - quantity
+    end
+    # binding.pry
+
+  end
 end

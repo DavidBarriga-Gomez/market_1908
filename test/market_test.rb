@@ -10,6 +10,8 @@ class MarketTest < Minitest::Test
     @vendor_1 = Vendor.new("Rocky Mountain Fresh")
     @vendor_2 = Vendor.new("Ba-Nom-a-Nom")
     @vendor_3 = Vendor.new("Palisade Peach Shack")
+    #can add all stock lines to set up should make code look cleaner
+    #do this if you have time to refactor, can't do the add vendor
   end
 
   def test_existence
@@ -70,5 +72,22 @@ class MarketTest < Minitest::Test
     @vendor_2.stock("Peach-Raspberry Nice Cream", 25)
     @vendor_3.stock("Peaches", 65)
     assert_equal ({"Peaches"=>100, "Tomatoes"=>7, "Banana Nice Cream"=>50, "Peach-Raspberry Nice Cream"=>25}), @market.total_inventory
+  end
+
+  def test_method_sell
+    @market.add_vendor(@vendor_1)
+    @market.add_vendor(@vendor_2)
+    @market.add_vendor(@vendor_3)
+    @vendor_1.stock("Peaches", 35)
+    @vendor_1.stock("Tomatoes", 7)
+    @vendor_2.stock("Banana Nice Cream", 50)
+    @vendor_2.stock("Peach-Raspberry Nice Cream", 25)
+    @vendor_3.stock("Peaches", 65)
+    # refute @market.sell("Peaches", 200)
+    #above line passes test without actually doing anything
+    assert_equal false, @market.sell("Peaches", 200)
+    assert_equal false, @market.sell("Onions", 1)
+    assert @market.sell("Banana Nice Cream", 5)
+    assert_equal 45, @vendor_2.check_stock("Banana Nice Cream")
   end
 end
