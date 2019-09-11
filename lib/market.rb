@@ -46,9 +46,18 @@ class Market
       false
     else total_inventory[food_item] >= quantity
       # total_inventory[food_item] - quantity && true
-      @vendors.each do |vendor|
+      # @vendors.each do |vendor|
+      # vendor.inventory[food_item] - quantity
+      vendors_that_sell(food_item).each do |vendor|
         vendor.inventory[food_item] - quantity
-        binding.pry
+        # if quantity >= vendor.inventory[food_item]
+          # binding.pry
+          # quantity -= vendor.inventory[food_item]
+          # until vendor.inventory[food_item] == 0
+
+
+      # end
+      # end
       end
     end
   end
