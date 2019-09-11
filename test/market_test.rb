@@ -45,5 +45,6 @@ class MarketTest < Minitest::Test
     @vendor_2.stock("Peach-Raspberry Nice Cream", 25)
     @vendor_3.stock("Peaches", 65)
     assert_equal [@vendor_1, @vendor_3], @market.vendors_that_sell("Peaches")
+    assert_equal [@vendor_2], @market.vendors_that_sell("Banana Nice Cream")
   end
 end

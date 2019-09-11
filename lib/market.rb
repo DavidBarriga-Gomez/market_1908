@@ -14,4 +14,10 @@ class Market
       vendor.name
     end
   end
+
+  def vendors_that_sell(food_item)
+    @vendors.find_all do |vendor|
+      vendor.inventory[food_item] != 0
+    end
+  end
 end
