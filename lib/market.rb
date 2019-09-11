@@ -44,10 +44,11 @@ class Market
   def sell(food_item, quantity)
     if total_inventory[food_item] < quantity
       false
-    elsif total_inventory[food_item] >= quantity
-      true && total_inventory[food_item] - quantity
+    else total_inventory[food_item] >= quantity
+      # total_inventory[food_item] - quantity && true
+      @vendors.each do |vendor|
     end
-    # binding.pry
+    binding.pry
 
   end
 end
