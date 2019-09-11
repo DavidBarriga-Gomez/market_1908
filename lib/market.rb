@@ -32,6 +32,12 @@ class Market
   end
 
   def total_inventory
-
-  end 
+    food_hash = Hash.new(0)
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item|
+      food_hash[item[0]] += item[1]
+      end
+    end
+    food_hash
+  end
 end
