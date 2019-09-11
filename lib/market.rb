@@ -20,4 +20,18 @@ class Market
       vendor.inventory[food_item] != 0
     end
   end
+
+  def sorted_item_list
+    food_array = []
+    @vendors.each do |vendor|
+      vendor.inventory.find_all do |item|
+        food_array.push item[0]
+      end
+    end
+    food_array.sort.uniq
+  end
+
+  def total_inventory
+
+  end 
 end
